@@ -1,5 +1,6 @@
 stages:
   - test
+  - deploy
 
 pytest:
   stage: test
@@ -10,3 +11,10 @@ pytest:
   artifacts:
     reports:
       junit: junit.xml
+
+deployment:
+  stage: deploy
+  script:
+    - curl https://api.render.com/deploy/srv-d5teeum3jp1c73e5unqg?key=bO9ecw_ONZQ
+  only:
+    - main
